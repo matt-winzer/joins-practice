@@ -40,12 +40,16 @@ SELECT * FROM owner
 INNER JOIN pet
 ON owner.id = pet.owner_id;
 ```
+
+* Write basic SQL joins: `one-to-many`
   - LEFT join
 ```sql
 SELECT * FROM owner
 LEFT JOIN pet
 ON owner.id = pet.owner_id;
 ```
+
+* Write basic SQL joins: `one-to-many`
   - BONUS: LEFT join of owners who DO NOT HAVE pets
 ```sql
 SELECT * FROM owner
@@ -54,6 +58,7 @@ ON owner.id = pet.owner_id
 WHERE pet.id IS NULL;
 ```
 
+* Write basic SQL joins: `one-to-many`
   - FULL OUTER join
 ```sql
 SELECT * FROM owner
@@ -70,6 +75,7 @@ ON owner.id = pet.owner_id;
 ```
 
 * BONUS: Write basic SQL joins that select certain fields and ALIAS them!
+  - INNER join
 ```sql
 SELECT owner.name AS owner_name, pet.name AS pet_name FROM owner
 INNER JOIN pet
