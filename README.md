@@ -92,8 +92,8 @@ ON owner.id = pet.owner_id;
   - INNER JOIN all fields
   - INNER JOIN selected fields
   - INNER JOIN selected fields with aliases
-* Write many-to-many SQL joins that return subsets of data
 * Explain syntax and structure of many-to-many SQL joins
+* Write many-to-many SQL joins that return subsets of data
 
 ## Instructions
 
@@ -106,10 +106,26 @@ ON owner.id = pet.owner_id;
 
 * INNER JOIN all fields
 
+```sql
+SELECT * FROM author
+INNER JOIN author_book
+ON author.id = author_book.author_id
+INNER JOIN book
+ON author_book.book_id =  book.id;
+```
+
 * INNER JOIN selected fields
   - author name
   - author email
   - book title
+
+```sql
+SELECT author.name, author.email, book.title FROM author
+INNER JOIN author_book
+ON author.id = author_book.author_id
+INNER JOIN book
+ON author_book.book_id =  book.id;
+```
 
 * INNER JOIN selected fields with aliases
   - author id (aliased)
@@ -117,9 +133,34 @@ ON owner.id = pet.owner_id;
   - book id (aliased)
   - book title
 
+```sql
+SELECT author.id AS author_id, author.name, book.id AS book_id, book.title FROM author
+INNER JOIN author_book
+ON author.id = author_book.author_id
+INNER JOIN book
+ON author_book.book_id =  book.id;
+```
+
 * INNER JOIN subset of data
   - All fields for 'Mark' and his book(s)
 
+```sql
+SELECT * FROM author
+INNER JOIN author_book
+ON author.id = author_book.author_id
+INNER JOIN book
+ON author_book.book_id =  book.id
+WHERE author.name = 'Mark';
+```
+
 * INNER JOIN subset of data
   - All fields for 'Modern Romance' and its author(s)
-  
+
+```sql
+SELECT * FROM author
+INNER JOIN author_book
+ON author.id = author_book.author_id
+INNER JOIN book
+ON author_book.book_id =  book.id
+WHERE book.title = 'Modern Romance';
+```
